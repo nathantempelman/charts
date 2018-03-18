@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511022011) do
+ActiveRecord::Schema.define(version: 20170519002110) do
+
+  create_table "doctors", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.integer "practice_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.index ["email"], name: "index_doctors_on_email", unique: true
+    t.index ["practice_id"], name: "index_doctors_on_practice_id"
+  end
 
   create_table "practices", force: :cascade do |t|
     t.text "name"
